@@ -3,7 +3,7 @@
   var P2 = "O";
   var player;
   var game;
-  var socket = io.connect("https://tic-tac-toe-game-r0qt.onrender.com:10000");
+  var socket = io.connect("https://tic-tac-toe-game-r0qt.onrender.com/");
 
   $("#new").on("click", () => {
     var name = $(`#nameNew`).val();
