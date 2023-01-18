@@ -124,7 +124,7 @@
     $('#'+tile).text(type);
     $('#'+tile).prop('disabled', true);
     this.board[row][col] = type;
-    this.moves ++;
+    this.moves+=1;
   }
 
 
@@ -148,7 +148,7 @@
     Player.wins.forEach(function(winningPosition){
       // We're checking for every winning position if the player has achieved it.
       // Keep in mind that we are using a bitwise AND here not a logical one.PlaysArr
-      if(winningPosition & currentPlayerPositions == winningPosition){
+      if(winningPosition && currentPlayerPositions == winningPosition){
         game.announceWinner();
       }
     });
@@ -161,9 +161,11 @@
     }
   }
 
+  
+
 
   Game.prototype.checkTie = function(){
-    return this.moves >= 9;
+    return this.moves <= 9;
   }
 
   Game.prototype.announceWinner = function(){
