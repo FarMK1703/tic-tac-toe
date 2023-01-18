@@ -78,7 +78,7 @@
   var Game=function(roomId){
    this.roomId=roomId
    this.board=[]
-   this.mover=0
+   this.moves=0
   }
 
 
@@ -125,6 +125,7 @@
     $('#'+tile).prop('disabled', true);
     this.board[row][col] = type;
     this.moves+=1;
+    console.log(this.moves)
   }
 
 
@@ -155,8 +156,8 @@
   
     var tied = this.checkTie();
     if(tied){
-      socket.emit('gameEnded', {room: this.getRoomId(), message: 'Game Tied :('});
-      alert('Game Tied :(');
+      socket.emit('gameEnded', {room: this.getRoomId(), message: 'Ничья :('});
+      alert('Ничья :(');
       location.reload();	
     }
   }
@@ -165,7 +166,7 @@
 
 
   Game.prototype.checkTie = function(){
-    return this.moves <= 9;
+    return this.moves==9
   }
 
   Game.prototype.announceWinner = function(){
